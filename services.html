@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Services – StrategyFirst.in</title>
+
+  <!-- Google Fonts – Outfit & Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===================== GLOBAL ===================== */
+    body {
+      margin: 0;
+      font-family: "Outfit", sans-serif;
+      background: #ffffff;
+      color: #111;
+      letter-spacing: 0.3px;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Poppins', sans-serif;
+      margin: 0 0 10px 0;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* ===================== NAVBAR ===================== */
+    nav {
+      width: 90%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      transition: 0.3s;
+    }
+
+    nav:hover {
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      font-size: 35px;
+      font-weight: 500;
+      color: #00a6ff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #111;
+      font-weight: 400;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #00a6ff;
+    }
+
+    /* ===================== SERVICE HEADER ===================== */
+    .service-header {
+      padding: 140px 6% 40px;
+      text-align: center;
+    }
+
+    .service-header h1 {
+      font-size: 50px;
+      font-weight: 500;
+      animation: fadeInDown 1s ease forwards;
+    }
+
+    .service-header p {
+      font-size: 18px;
+      margin-top: 12px;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    /* ===================== SERVICE CARDS ===================== */
+    .service-cards {
+      padding: 20px 6% 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s forwards;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+    .card:nth-child(5) { animation-delay: 0.5s; }
+    .card:nth-child(6) { animation-delay: 0.6s; }
+    .card:nth-child(7) { animation-delay: 0.7s; }
+    .card:nth-child(8) { animation-delay: 0.8s; }
+    .card:nth-child(9) { animation-delay: 0.9s; }
+    .card:nth-child(10){ animation-delay: 1s; }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .card h3 {
+      font-weight: 500;
+      color: #00a6ff;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #333;
+      font-size: 15px;
+      margin-bottom: 18px;
+    }
+
+    .read-btn {
+      background: #00a6ff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      color: white;
+      font-weight: 500;
+      transition: 0.3s;
+      display: inline-block;
+    }
+
+    .read-btn:hover {
+      transform: scale(1.05);
+      background: #0077cc;
+    }
+
+    /* ===================== SERVICE DETAILS ===================== */
+    .service-details {
+      padding: 40px 6% 80px;
+    }
+
+    .detail-block {
+      background: #f5f5f5;
+      padding: 30px;
+      border-radius: 14px;
+      margin-bottom: 40px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 0.8s forwards;
+    }
+
+    .detail-block h2 {
+      color: #00a6ff;
+      font-weight: 500;
+      margin-bottom: 10px;
+      font-size: 32px;
+    }
+
+    .detail-block p {
+      font-size: 16px;
+      color: #333;
+      line-height: 1.7;
+    }
+
+    .detail-block:nth-child(1) { animation-delay: 0.2s; }
+    .detail-block:nth-child(2) { animation-delay: 0.4s; }
+    .detail-block:nth-child(3) { animation-delay: 0.6s; }
+    .detail-block:nth-child(4) { animation-delay: 0.8s; }
+    .detail-block:nth-child(5) { animation-delay: 1s; }
+    .detail-block:nth-child(6) { animation-delay: 1.2s; }
+    .detail-block:nth-child(7) { animation-delay: 1.4s; }
+    .detail-block:nth-child(8) { animation-delay: 1.6s; }
+    .detail-block:nth-child(9) { animation-delay: 1.8s; }
+    .detail-block:nth-child(10){ animation-delay: 2s; }
+
+    /* ===================== FOOTER ===================== */
+    footer {
+      background: #f5f5f5;
+      padding: 20px;
+      text-align: center;
+      color: #555;
+      font-size: 14px;
+    }
+
+    /* ===================== ANIMATIONS ===================== */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 900px) {
+      .service-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav>
+    <div class="logo">StrategyFirst.in</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="services.html" style="color:#00a6ff;">Services</a>
+      <a href="about.html">About Us</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ===================== SERVICE HEADER ===================== -->
+  <section class="service-header">
+    <h1>Our Digital Services</h1>
+    <p>Precision-built strategies to accelerate your growth trajectory.</p>
+  </section>
+
+  <!-- ===================== SERVICE CARDS ===================== -->
+  <section class="service-cards">
+
+    <div class="card">
+      <h3>SEO – Rank Higher</h3>
+      <p>Boost your Google ranking with on-page, off-page, and technical SEO strategies.</p>
+      <a href="#seo" class="read-btn">Read More</a>
+    </div>
+
+    <div class="card">
+      <h3>Social Media Growth</h3>
+      <p>Grow your brand’s presence on Instagram, Facebook, and YouTube with content that resonates.</p>
+      <a href="#social-media" class="read-btn">Read More</a>
+    </div>
+
+    <div class="card">
+      <h3>Website Development</h3>
+      <p>Fast, modern, mobile-friendly websites tailored to your brand and purpose.</p>
+      <a href="#website" class="read-btn">Read More</a>
+    </div>
+
+    <div class="card">
+      <h3>Performance Marketing</h3>
+      <p>ROI-focused ad campaigns on Google, Meta, and YouTube that deliver measurable results.</p>
+      <a href="#marketing" class="read-btn">Read More</a>
+    </div>
+
+    <div class="card">
+      <h3>Branding & Design</h3>
+      <p>Logo, identity, creatives, and design systems that communicate trust and clarity.</p>
+      <a href="#branding" class="read-btn">Read More</a>
+    </div>
+
+    <div class="card">
+      <h3>Marketing Automation</h3>
+      <p>Automate follow-ups, lead nurturing, email flows, and customer journey mapping.</p>
+      <a href="#automation" class="read-btn">Read More</a>
+    </div>
+
+    <div class="card">
+      <h3>AI Marketing Tools</h3>
+      <p>AI-powered optimization, chatbot integration, automation models, & more.</p>
+      <a href="#ai-tools" class="read-btn">Read More</a>
+    </div>
+
+    <div class="card">
+      <h3>Content Strategy</h3>
+      <p>Content planning, blogs, short-form scripts, newsletters & brand storytelling.</p>
+      <a href="#content" class="read-btn">Read More</a>
+    </div>
+
+    <div class="card">
+      <h3>Email Campaigns</h3>
+      <p>High-converting email designs, audience segmentation, and automation flows.</p>
+      <a href="#email" class="read-btn">Read More</a>
+    </div>
+
+    <div class="card">
+      <h3>Google & Meta Ads</h3>
+      <p>Search ads, display ads, retargeting, and performance optimization.</p>
+      <a href="#ads" class="read-btn">Read More</a>
+    </div>
+
+  </section>
+
+  <!-- ===================== SERVICE DETAILS ===================== -->
+  <section class="service-details">
+
+    <div class="detail-block" id="seo">
+      <h2>SEO – Rank Higher</h2>
+      <p>We optimize your website’s structure, content, speed, and authority. Our SEO approach blends keyword strategy, backlinks, and technical audits to improve visibility on Google and bring organic traffic that converts. We boost your visibility, increase organic traffic, and help your business grow without paying for ads.</p>
+    </div>
+
+    <div class="detail-block" id="social-media">
+      <h2>Social Media Growth</h2>
+      <p>We help your brand grow on social media with consistent, engaging, and strategic content. From optimizing your profiles to creating posts, reels, and growth strategies, we increase your followers, improve engagement, and build a strong online presence that attracts your ideal audience.</p>
+    </div>
+
+    <div class="detail-block" id="website">
+      <h2>Website Development</h2>
+      <p>We design and develop fast, modern, and user-friendly websites that represent your brand and convert visitors into customers. From responsive layouts to smooth functionality and strong SEO foundations, we build websites that not only look great but also help your business grow.</p>
+    </div>
+
+    <div class="detail-block" id="marketing">
+      <h2>Performance Marketing</h2>
+      <p>We run data-driven performance marketing campaigns focused on measurable results—leads, sales, and ROI. By optimizing every step of the customer journey across platforms like Google, Meta, and more, we ensure you pay only for real outcomes while achieving faster, scalable business growth.</p>
+    </div>
+
+    <div class="detail-block" id="branding">
+      <h2>Branding & Design</h2>
+      <p>We create strong brand identities with professional design that makes your business stand out. From logos and color palettes to social media creatives and brand guidelines, we deliver visually consistent designs that build trust, recognition, and long-lasting impact.</p>
+    </div>
+
+    <div class="detail-block" id="automation">
+      <h2>Marketing Automation</h2>
+      <p>We set up smart marketing automation systems that save you time and boost conversions by handling repetitive tasks automatically. From email sequences and lead nurturing to customer follow-ups and sales workflows, we ensure your business runs smoother while delivering personalized experiences.</p>
+    </div>
+
+    <div class="detail-block" id="ai-tools">
+      <h2>AI Marketing Tools</h2>
+      <p>We implement smart AI marketing tools to automate your business growth—helping you analyze customer behavior, personalize content, optimize ads, and track performance in real time. These tools make your marketing faster, more accurate, and cost-effective.</p>
+    </div>
+
+    <div class="detail-block" id="content">
+      <h2>Content Strategy</h2>
+      <p>We develop a clear and effective content strategy that helps your brand communicate consistently and attract the right audience. From planning what to post to choosing the best platforms and creating engaging content ideas, we ensure your message is aligned with your business goals and delivers real results.</p>
+    </div>
+
+    <div class="detail-block" id="email">
+      <h2>Email Campaigns</h2>
+      <p>We create and manage professional email campaigns that help you stay connected with your audience, nurture leads, and drive sales. From designing eye-catching templates to writing effective copy and automating follow-ups, we ensure your emails reach the right people at the right time.</p>
+    </div>
+
+    <div class="detail-block" id="ads">
+      <h2>Google & Meta Ads</h2>
+      <p>We run high-performing Google and Meta ad campaigns to help your business reach the right audience and generate more leads, sales, and brand awareness. Using smart targeting, optimized creatives, and continuous monitoring, we ensure maximum ROI and consistent business growth.</p>
+    </div>
+
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="footer-container" style="display:flex; flex-wrap:wrap; justify-content:space-between; max-width:1200px; margin:0 auto; gap:40px;">
+      <div class="footer-section" style="flex:1; min-width:220px;">
+        <h4>Contact Us</h4>
+        <p>123 Digital Avenue,<br>Maharashtra, India</p>
+        <p>Email: <a href="mailto:contact@strategyfirst.in">contact@strategyfirst.in</a></p>
+        <p>Phone: <a href="tel:+911234567890">+91 8591639208</a></p>
+      </div>
+      <div class="footer-section" style="flex:1; min-width:180px;">
+        <h4>Quick Links</h4>
+        <ul style="list-style:none;padding:0;line-height:2;">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section" style="flex:1; min-width:180px;">
+        <h4>Follow Us</h4>
+        <div style="display:flex; gap:15px; font-size:20px;">
+          <a href="#">🌐</a>
+          <a href="#">📘</a>
+          <a href="#">🐦</a>
+          <a href="#">📸</a>
+        </div>
+      </div>
+      <div class="footer-section" style="flex:1; min-width:220px;">
+        <h4>Newsletter</h4>
+        <p>Subscribe for updates and offers:</p>
+        <form style="display:flex; flex-direction:column; gap:10px;">
+          <input type="email" placeholder="Your email" required>
+          <button type="submit" style="padding:12px;background:#00a6ff;color:white;border:none;border-radius:6px;cursor:pointer;">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div style="text-align:center;padding:20px 6%;border-top:1px solid #ddd;font-size:14px;color:#555;margin-top:40px;">
+      © 2025 StrategyFirst.in – All Rights Reserved. | 
+      <a href="#">Privacy Policy</a> | 
+      <a href="#">Terms of Service</a>
+    </div>
+  </footer>
+
+</body>
+</html>

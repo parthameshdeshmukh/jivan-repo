@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About StrategyFirst.in</title>
+
+  <!-- Google Fonts – Outfit & Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===================== GLOBAL ===================== */
+    body {
+      margin: 0;
+      font-family: "Outfit", sans-serif;
+      font-weight: 300;
+      background: #f8f8f8;
+      color: #111;
+      letter-spacing: 0.3px;
+    }
+
+    h1, h2, h3, h4 {
+      font-weight: 500;
+      margin: 0 0 10px 0;
+      color: #111;
+    }
+
+    p {
+      font-weight: 300;
+      color: #333;
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* ===================== NAVBAR ===================== */
+    nav {
+      width: 90%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    nav .logo {
+      font-size: 35px;
+      font-weight: 500;
+      color: #00a6ff;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: #111;
+      font-weight: 400;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #00a6ff;
+    }
+
+    /* ===================== HEADER ===================== */
+    .about-header {
+      padding: 120px 6% 40px;
+      text-align: center;
+      background: url('images/about-banner.jpg') center/cover no-repeat;
+      color: #fff;
+      text-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    }
+
+    .about-header h1 {
+      font-size: 48px;
+      font-weight: 500;
+      margin-bottom: 15px;
+      color: #00a6ff;
+      animation: fadeInDown 1s ease forwards;
+    }
+
+    .about-header p {
+      font-size: 18px;
+      color: #070606;
+      max-width: 800px;
+      margin: 0 auto;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    /* ===================== SECTIONS ===================== */
+    .section {
+      width: 90%;
+      max-width: 1100px;
+      margin: 60px auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.05);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section h2 {
+      font-size: 32px;
+      margin-bottom: 15px;
+      color: #00a6ff;
+    }
+
+    .divider {
+      width: 60px;
+      height: 4px;
+      background: #00a6ff;
+      border-radius: 10px;
+      margin-bottom: 25px;
+    }
+
+    .service-item {
+      margin-bottom: 20px;
+      padding: 15px 20px;
+      border-left: 4px solid #00a6ff;
+      background: #fafafa;
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+
+    .service-item:hover {
+      transform: translateY(-3px);
+    }
+
+    .service-item h3 {
+      margin-bottom: 8px;
+      color: #00a6ff;
+    }
+
+    .read-more-btn {
+      background: #00a6ff;
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      margin-top: 5px;
+      transition: 0.3s;
+    }
+
+    .read-more-btn:hover {
+      background: #005fcc;
+    }
+
+    .extra-content {
+      max-height: 0;
+      overflow: hidden;
+      margin-top: 10px;
+      padding-left: 10px;
+      font-size: 15px;
+      color: #333;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+    }
+
+    .extra-content.open {
+      max-height: 500px;
+      padding-top: 10px;
+    }
+
+    .difference-list {
+      margin-top: 20px;
+      padding-left: 20px;
+    }
+
+    .difference-list li {
+      margin-bottom: 12px;
+      line-height: 1.6;
+      font-size: 18px;
+    }
+
+    /* ===================== COUNTERS ===================== */
+    .counters {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .counters div {
+      text-align: center;
+    }
+
+    .counters h3 {
+      font-size: 36px;
+      color: #00a6ff;
+      margin-bottom: 5px;
+    }
+
+    .counters p {
+      font-size: 16px;
+      color: #333;
+    }
+
+    /* ===================== TEAM ===================== */
+    .team {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .team-member {
+      text-align: center;
+      width: 200px;
+    }
+
+    .team-member img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .team-member h3 {
+      margin-top: 10px;
+      color: #00a6ff;
+    }
+
+    .team-member p {
+      font-size: 14px;
+      color: #333;
+    }
+
+    /* ===================== CLIENTS ===================== */
+    .clients {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    .clients img {
+      width: 120px;
+      filter: grayscale(100%);
+      transition: filter 0.3s;
+    }
+
+    .clients img:hover {
+      filter: none;
+    }
+
+    /* ===================== VIDEO ===================== */
+    .video-section video {
+      width: 100%;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+
+    /* ===================== CTA ===================== */
+    .cta-section {
+      text-align: center;
+      background: #00a6ff;
+      color: #fff;
+      padding: 60px 20px;
+      border-radius: 12px;
+      margin-top: 40px;
+    }
+
+    .cta-section a {
+      background: #fff;
+      color: #00a6ff;
+      padding: 12px 25px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-top: 20px;
+      font-weight: 500;
+    }
+
+    @media (max-width: 900px) {
+      .about-header h1 { font-size: 36px; }
+      .about-header p { font-size: 16px; }
+      .section { padding: 25px; margin: 50px auto; }
+      nav { padding: 12px 6%; }
+      nav ul { gap: 15px; }
+    }
+
+    /* ===================== ANIMATIONS ===================== */
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav>
+    <div class="logo">StrategyFirst.in</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" style="color:#00a6ff;">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ================= ABOUT HEADER ================= -->
+  <header class="about-header">
+    <h1>About StrategyFirst.in</h1>
+    <p>We engineer performance-driven digital growth for brands who want measurable results and long-term impact. Our approach blends creativity, technology, and strategy to deliver tangible ROI while building a sustainable online presence.</p>
+  </header>
+
+  <!-- ================= OUR SERVICES ================= -->
+  <section class="section">
+    <h2>Our Services</h2>
+    <div class="divider"></div>
+  
+    <!-- Visibility -->
+    <h3>1. Visibility: Get Found by the Right Customers</h3>
+  
+    <div class="service-item">
+      <h3>SEO – Rank Higher</h3>
+      <p>Technical audits, keyword research, backlinks, and optimization to boost your search rankings.</p>
+      <button class="read-more-btn">Read More</button>
+      <div class="extra-content">
+        Our SEO strategy includes advanced keyword mapping, competitor analysis, and on-page optimization to help your website rank higher and attract qualified organic traffic.
+      </div>
+    </div>
+  
+    <div class="service-item">
+      <h3>PPC Advertising</h3>
+      <p>Google Ads, Meta Ads, LinkedIn Ads—targeted campaigns for leads and fast results.</p>
+      <button class="read-more-btn">Read More</button>
+      <div class="extra-content">
+        We create and optimize ad campaigns to maximize ROI, track conversions, and generate qualified leads quickly through Google, Meta, and LinkedIn.
+      </div>
+    </div>
+  
+    <div class="service-item">
+      <h3>Content Strategy</h3>
+      <p>Blogs, videos, case studies, and whitepapers to build authority, trust, and engagement.</p>
+      <button class="read-more-btn">Read More</button>
+      <div class="extra-content">
+        We craft content that speaks to your audience, increases engagement, and builds your brand's thought leadership through a mix of formats and platforms.
+      </div>
+    </div>
+  
+    <div class="service-item">
+      <h3>AI Marketing Tools</h3>
+      <p>Smart automation and analytics to optimize campaigns and track performance in real time.</p>
+      <button class="read-more-btn">Read More</button>
+      <div class="extra-content">
+        AI-powered tools allow us to automate repetitive tasks, predict trends, personalize campaigns, and improve overall marketing efficiency.
+      </div>
+    </div>
+  
+    <!-- Conversion -->
+    <h3>2. Conversion: Turning Clicks into Customers</h3>
+  
+    <div class="service-item">
+      <h3>CRO (Conversion Rate Optimization)</h3>
+      <p>Heatmaps, A/B testing, and landing page optimization to maximize conversions.</p>
+      <button class="read-more-btn">Read More</button>
+      <div class="extra-content">
+        Our CRO process analyzes visitor behavior, tests multiple layouts, and optimizes pages to ensure maximum conversion rates.
+      </div>
+    </div>
+  
+    <div class="service-item">
+      <h3>Web Design & Development</h3>
+      <p>Modern, responsive, conversion-focused websites that turn visitors into customers.</p>
+      <button class="read-more-btn">Read More</button>
+      <div class="extra-content">
+        We build websites that combine aesthetics with functionality, ensuring fast load times, responsive design, and smooth user experiences.
+      </div>
+    </div>
+  
+    <div class="service-item">
+      <h3>Performance Marketing</h3>
+      <p>Data-driven campaigns to generate measurable leads, sales, and ROI.</p>
+      <button class="read-more-btn">Read More</button>
+      <div class="extra-content">
+        Our performance marketing strategies use analytics and data to target the right audience, optimize campaigns, and maximize business results.
+      </div>
+    </div>
+  
+    <div class="service-item">
+      <h3>Branding & Design</h3>
+      <p>Logos, brand identity, social creatives, and visual guidelines to stand out and build trust.</p>
+      <button class="read-more-btn">Read More</button>
+      <div class="extra-content">
+        We craft a strong brand identity with visually cohesive designs that communicate your brand values and foster customer trust.
+      </div>
+    </div>
+  
+    <!-- Retention -->
+    <h3>3. Retention: Build Lifetime Customer Value</h3>
+  
+    <div class="service-item">
+      <h3>Email Automation & Campaigns</h3>
+      <p>Personalized sequences, offers, and workflows to nurture and retain customers.</p>
+      <button class="read-more-btn">Read More</button>
+      <div class="extra-content">
+        Automated email campaigns allow us to maintain customer relationships, deliver targeted offers, and increase lifetime value.
+      </div>
+    </div>
+  
+    <div class="service-item">
+      <h3>Social Media Growth & Management</h3>
+      <p>Engaging content, community building, and strategic posting to grow your audience and keep them connected.</p>
+      <button class="read-more-btn">Read More</button>
+      <div class="extra-content">
+        We manage your social profiles, create content calendars, and engage with your audience to build a loyal community.
+      </div>
+    </div>
+  
+    <div class="service-item">
+      <h3>Marketing Automation</h3>
+      <p>Automate repetitive tasks and customer journeys to save time while improving efficiency and results.</p>
+      <button class="read-more-btn">Read More</button>
+      <div class="extra-content">
+        Automation systems streamline workflows, manage customer touchpoints, and improve marketing efficiency across platforms.
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- ================= WHAT MAKES US DIFFERENT ================= -->
+  <section class="section">
+    <h2>What Makes Us Different?</h2>
+    <div class="divider"></div>
+    <ul class="difference-list">
+      <li><strong>Focus on ROI:</strong> Every action is tied to measurable revenue growth.</li>
+      <li><strong>Integrated Strategy:</strong> SEO, PPC, and content executed as a unified growth engine.</li>
+      <li><strong>Data-Driven Transparency:</strong> Real-time dashboards, clear reporting, no guesswork.</li>
+      <li><strong>Expert Partnership:</strong> Our certified specialists act as an extension of your team.</li>
+      <li><strong>Future-Proofing:</strong> Strategies built for long-term sustainability and adaptation.</li>
+    </ul>
+  </section>
+
+  <!-- ================= ACHIEVEMENTS COUNTERS ================= -->
+  <section class="section">
+    <h2>Our Achievements</h2>
+    <div class="divider"></div>
+    <div class="counters">
+      <div>
+        <h3 class="counter" data-target="120">0</h3>
+        <p>Clients Served</p>
+      </div>
+      <div>
+        <h3 class="counter" data-target="250">0</h3>
+        <p>Campaigns Launched</p>
+      </div>
+      <div>
+        <h3 class="counter" data-target="95">0</h3>
+        <p>% Client Retention</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TEAM ================= -->
+  <section class="section">
+    <h2>Meet Our Team</h2>
+    <div class="divider"></div>
+    <div class="team">
+      <div class="team-member">
+        <img src="https://media.istockphoto.com/id/1369199360/photo/portrait-of-a-handsome-young-businessman-working-in-office.jpg?s=612x612&w=0&k=20&c=ujyGdu8jKI2UB5515XZA33Tt4DBhDU19dKSTUTMZvrg=" alt="John Doe">
+        <h3>John Doe</h3>
+        <p>CEO & Founder</p>
+      </div>
+      <div class="team-member">
+        <img src="https://media.istockphoto.com/id/1399565382/photo/young-happy-mixed-race-businessman-standing-with-his-arms-crossed-working-alone-in-an-office.jpg?s=1024x1024&w=is&k=20&c=fRiq_aLd5eX7bjr9Y0umM-b0kIxYDewARvO_9Ykqayc=" alt="Jane Smith">
+        <h3>Jane Smith</h3>
+        <p>Marketing Head</p>
+      </div>
+    </div>
+  </section>
+
+ <!-- ================= CLIENTS / PARTNERS ================= -->
+<section class="section">
+  <h2>Our Clients</h2>
+  <div class="divider"></div>
+  <div class="clients" style="display:flex; gap:40px; flex-wrap:wrap; justify-content:center; text-align:center;">
+    
+    <div class="client-item" style="text-align:center;">
+      <img src="client_1.jpg" alt="Bombay Grill" style="width:120px; height:120px; object-fit:cover; border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+      <p>Bombay Grill</p>
+    </div>
+
+    <div class="client-item" style="text-align:center;">
+      <img src="client_2.jpg" alt="Radhakrishna Homeopathy" style="width:120px; height:120px; object-fit:cover; border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+      <p>Radhakrishna Homeopathy</p>
+    </div>
+
+    <div class="client-item" style="text-align:center;">
+      <img src="client_3.jpg" alt="Mahesh Tutorials" style="width:120px; height:120px; object-fit:cover; border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+      <p>Mahesh Tutorials</p>
+    </div>
+
+    <div class="client-item" style="text-align:center;">
+      <img src="https://collegeassist.in/_next/image?url=https%3A%2F%2Fnurturflows.s3.ap-south-1.amazonaws.com%2Fbanner%2F15520372413993449621274199475192134100611427331473408n.jpg&w=828&q=75" 
+           alt="CSMU" style="width:120px; height:120px; object-fit:cover; border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+      <p>CSMU</p>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- ================= VIDEO / CASE STUDY ================= -->
+  <section class="section video-section">
+    <h2>Our Story</h2>
+    <div class="divider"></div>
+    <video controls>
+      <source src="video/strategyfirst-intro.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="cta-section">
+    <h2>Ready to Grow Your Business?</h2>
+    <p>Get in touch with our team for a free strategy session.</p>
+    <a href="contact.html">Contact Us</a>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="footer-container" style="display:flex; flex-wrap:wrap; justify-content:space-between; max-width:1200px; margin:0 auto; gap:40px;">
+      <div class="footer-section" style="flex:1; min-width:220px;">
+        <h4>Contact Us</h4>
+        <p>123 Digital Avenue,<br>Maharashtra, India</p>
+        <p>Email: <a href="mailto:contact@strategyfirst.in">contact@strategyfirst.in</a></p>
+        <p>Phone: <a href="tel:+911234567890">+91 8591639208</a></p>
+      </div>
+      <div class="footer-section" style="flex:1; min-width:180px;">
+        <h4>Quick Links</h4>
+        <ul style="list-style:none;padding:0;line-height:2;">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section" style="flex:1; min-width:180px;">
+        <h4>Follow Us</h4>
+        <div style="display:flex; gap:15px; font-size:20px;">
+          <a href="#">🌐</a>
+          <a href="#">📘</a>
+          <a href="#">🐦</a>
+          <a href="#">📸</a>
+        </div>
+      </div>
+      <div class="footer-section" style="flex:1; min-width:220px;">
+        <h4>Newsletter</h4>
+        <p>Subscribe for updates and offers:</p>
+        <form style="display:flex; flex-direction:column; gap:10px;">
+          <input type="email" placeholder="Your email" required>
+          <button type="submit" style="padding:12px;background:#00a6ff;color:white;border:none;border-radius:6px;cursor:pointer;">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div style="text-align:center;padding:20px 6%;border-top:1px solid #ddd;font-size:14px;color:#555;margin-top:40px;">
+      © 2025 StrategyFirst.in – All Rights Reserved. | 
+      <a href="#">Privacy Policy</a> | 
+      <a href="#">Terms of Service</a>
+    </div>
+  </footer>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script>
+    // Read more toggle
+    const buttons = document.querySelectorAll('.read-more-btn');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const content = btn.nextElementSibling;
+        content.classList.toggle('open');
+        btn.innerText = content.classList.contains('open') ? "Read Less" : "Read More";
+      });
+    });
+
+    // Counters
+    const counters = document.querySelectorAll('.counter');
+    counters.forEach(counter => {
+      const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const increment = target / 200;
+        if(count < target){
+          counter.innerText = Math.ceil(count + increment);
+          setTimeout(updateCount, 10);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      updateCount();
+    });
+
+    // Scroll animation
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {threshold:0.2});
+    sections.forEach(sec => observer.observe(sec));
+  </script>
+
+</body>
+</html>

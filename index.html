@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StrategyFirst.in – Digital Growth Agency</title>
+
+  <!-- Google Fonts – Outfit -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===================== GLOBAL ===================== */
+    body {
+      margin: 0;
+      font-family: "Outfit", sans-serif;
+      font-weight: 300;
+      background: #ffffff;
+      color: #222222;
+      letter-spacing: 0.3px;
+      scroll-behavior: smooth;
+    }
+    h1,h2,h3,h4{margin:0;color:#111111;font-weight:300;letter-spacing:0.6px;}
+    p{color:#222222;}
+    a{text-decoration:none;color:#111111;transition:0.3s;}
+    a:hover{color:#00a6ff;}
+
+    /* ===================== NAVBAR ===================== */
+    nav {
+      width: 90%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .logo {
+      font-size: 36px;
+      font-weight: 600;
+    }
+    .nav-links {display:flex;gap:25px;align-items:center;}
+    .nav-links a{font-size:15px;font-weight:300;}
+    .nav-links a:hover{color:#00a6ff;}
+    .nav-links .dropdown {position:relative;}
+    .nav-links .dropbtn {cursor:pointer;display:flex;align-items:center;gap:5px;}
+    .chevron{font-size:12px;transition: transform 0.3s ease;}
+    .dropdown-content {
+      display:none;
+      position:absolute;
+      background-color:#fff;
+      min-width:600px;
+      max-width:90vw;
+      box-shadow:0 8px 16px rgba(0,0,0,0.2);
+      border-radius:8px;
+      overflow-x:auto;
+      white-space:nowrap;
+      z-index:1000;
+      top:35px;
+      opacity:0;
+      transform:translateY(10px);
+      transition:opacity 0.4s ease, transform 0.4s ease;
+    }
+    .dropdown-content a{padding:12px 20px; display:inline-block; font-weight:300;}
+    .dropdown-content a:hover{background-color:#00a6ff;color:#fff;border-radius:6px;}
+    .dropdown.active .chevron{transform:rotate(180deg);}
+    .dropdown.active .dropdown-content{display:block; opacity:1; transform:translateY(0);}
+    .horizontal-scroll::-webkit-scrollbar{height:6px;}
+    .horizontal-scroll::-webkit-scrollbar-thumb{background:#00a6ff;border-radius:3px;}
+
+    /* ===================== HERO ===================== */
+    #hero {
+      display:flex;align-items:center;gap:40px;padding:0 6%;height:100vh;min-height:600px;position:relative;
+    }
+    .hero-image-section{
+      flex:1;position:relative;border-radius:14px;overflow:hidden;min-height:500px;
+      box-shadow:0 0 20px #00a6ff;
+      border:2px solid #00a6ff;
+    }
+    .hero-image-section img{width:100%;height:100%;object-fit:cover;}
+    .hero-form {
+      flex:1;background: rgba(255,255,255,0.95);padding:30px;border-radius:14px;
+      box-shadow:0 4px 20px rgba(0,0,0,0.1);transition: transform 0.5s ease;
+    }
+    .hero-form:hover{transform: translateY(-5px);}
+    .hero-form h3{color:#111;}
+    .hero-form p{color:#222;}
+    .hero-form input, .hero-form select, .hero-form textarea {
+      background:#fff;border:1px solid #ccc;padding:12px;width:100%;margin-bottom:14px;border-radius:8px;color:#111;
+    }
+    .btn {background:#00a6ff;color:white;padding:14px 30px;border-radius:10px;font-weight:300;display:inline-block;margin-top:10px;transition:0.3s;}
+    .btn:hover{transform:scale(1.04);}
+
+    /* ===================== FEATURES / SERVICES CARDS ===================== */
+    .features{padding:80px 6%; background:#f9f9f9;}
+    .feature-cards{display:flex;flex-wrap:wrap;gap:30px;justify-content:center;}
+    .feature-card{
+      background:#fff;border-radius:14px;padding:30px 20px;width:280px;text-align:center;
+      box-shadow:0 5px 20px rgba(0,0,0,0.1);transition:transform 0.3s, box-shadow 0.3s;
+    }
+    .feature-card:hover{transform:translateY(-5px);box-shadow:0 10px 25px rgba(0,0,0,0.15);}
+    .feature-card .emoji{font-size:40px;margin-bottom:15px;}
+    .feature-card h3{margin-bottom:12px;}
+    .feature-card p{font-size:14px;line-height:1.5;}
+
+    /* ===================== PARTNERS ===================== */
+    .partners{padding:80px 6%;text-align:center;}
+    .partner-logos{margin-top:40px;display:flex;justify-content:center;flex-wrap:wrap;gap:45px;}
+    .partner-card{background:#fff;padding:18px 26px;border-radius:12px;box-shadow:0 3px 15px rgba(0,0,0,0.1);font-size:18px;font-weight:300;color:#111;}
+    .partner-card:hover{transform:scale(1.05);transition:0.3s;}
+
+    /* ===================== SINGLE SECTION ===================== */
+    .single-section{padding:80px 6%;background:#e6f7ff;text-align:center;}
+    .single-section h2{color:#00a6ff;margin-bottom:20px;font-size:36px;}
+    .single-section p{color:#222;font-size:18px;max-width:800px;margin:0 auto 30px;}
+    .single-section img{max-width:100%;border-radius:14px;box-shadow:0 5px 20px rgba(0,0,0,0.1);}
+
+    /* ===================== TESTIMONIALS ===================== */
+    .testimonials{padding:80px 6%; background:#fff;text-align:center;}
+    .testimonial-cards{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;margin-top:40px;}
+    .testimonial-card{
+      background:#f9f9f9;padding:30px;border-radius:14px;width:300px;
+      box-shadow:0 5px 20px rgba(0,0,0,0.1);transition:transform 0.3s;
+    }
+    .testimonial-card:hover{transform:translateY(-5px);}
+    .testimonial-card p{font-size:15px;line-height:1.6;margin-bottom:10px;font-style:italic;}
+    .testimonial-card h4{font-weight:500;color:#00a6ff;font-size:14px;}
+
+    /* ===================== STATS ===================== */
+    .stats{padding:80px 6%; background:#e6f7ff; display:flex;justify-content:center;flex-wrap:wrap;gap:40px;text-align:center;}
+    .stat-card{background:#fff;padding:40px 30px;border-radius:14px;box-shadow:0 5px 20px rgba(0,0,0,0.1);}
+    .stat-card h3{font-size:32px;color:#00a6ff;margin-bottom:10px;}
+    .stat-card p{font-size:14px;color:#111;}
+
+    /* ===================== FOOTER ===================== */
+    footer{background:#f5f5f5;padding:60px 6%; font-family:'Outfit', sans-serif;}
+    footer a{color:#111;text-decoration:none;}
+    footer a:hover{color:#00a6ff;}
+
+    /* ===================== RESPONSIVE ===================== */
+    @media(max-width:900px){
+      #hero{flex-direction:column;text-align:center;}
+      .hero-form{width:100%;max-width:380px;margin-top:30px;}
+      .feature-cards{flex-direction:column;align-items:center;}
+      .testimonial-cards{flex-direction:column;align-items:center;}
+      .stats{flex-direction:column;align-items:center;}
+    }
+
+    /* ===================== ANIMATIONS ===================== */
+    .fade-up{opacity:0;transform:translateY(20px);transition:all 0.8s ease-out;}
+    .fade-up.visible{opacity:1;transform:translateY(0);}
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">
+      <span style="color:#00a6ff;">Strategy</span><span style="color:#111;">First.in</span>
+    </div>
+    <div class="nav-links">
+      <a href="#hero">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="login.html">Login</a>
+
+    </div>
+  </nav>
+  
+
+  <!-- HERO SECTION -->
+  <section id="hero">
+    <div class="hero-image-section">
+      <img src="Digital Marketing Agency Instagram Post.png" alt="Business Growth">
+    </div>
+    <div class="hero-form">
+      <h3>Get Free Business Audit</h3>
+      <p>Fill the form and our team will reach out within 24 hours.</p>
+    
+      <form id="businessForm" action="https://formsubmit.co/shindejivan55@gmail.com" method="POST">
+    
+        <!-- Disable Captcha -->
+        <input type="hidden" name="_captcha" value="false">
+    
+        <!-- Redirect to same page after submit -->
+        <input type="hidden" name="_next" value="https://strategyfirst.in/">
+    
+        <!-- Full Name (no numbers allowed) -->
+        <input type="text" name="name" placeholder="Full Name" required pattern="^[A-Za-z\s]+$" title="Name cannot contain numbers or special characters">
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="text" name="phone" placeholder="Phone Number" required>
+    
+        <select name="service" required>
+          <option value="">Select Service</option>
+          <option>Digital Marketing</option>
+          <option>Website Development</option>
+          <option>Social Media Growth</option>
+        </select>
+    
+        <textarea name="message" placeholder="Tell us about your business..." rows="3"></textarea>
+    
+        <button class="btn" type="submit">Submit</button>
+      </form>
+    </div>
+    
+  </section>
+
+  <!-- FEATURES / SERVICES CARDS -->
+  <section class="features fade-up">
+    <h2 style="text-align:center;color:#00a6ff;margin-bottom:40px;">Our Core Services</h2>
+    <div class="feature-cards">
+      <div class="feature-card"><div class="emoji">📊</div><h3>Data Analysis</h3><p>Analyze your business data to identify trends, optimize performance, and make data-driven decisions.</p></div>
+      <div class="feature-card"><div class="emoji">⚡</div><h3>Performance Optimisation</h3><p>Improve website speed, conversion rates, and marketing ROI with smart optimization techniques.</p></div>
+      <div class="feature-card"><div class="emoji">🚀</div><h3>SEO & Visibility</h3><p>Boost your search rankings and get discovered by the right audience with advanced SEO strategies.</p></div>
+      <div class="feature-card"><div class="emoji">📱</div><h3>Social Media Growth</h3><p>Engage your audience and grow your brand across platforms like Instagram, Facebook, and LinkedIn.</p></div>
+      <div class="feature-card"><div class="emoji">🤖</div><h3>Marketing Automation</h3><p>Automate repetitive tasks, nurture leads, and save time while increasing ROI.</p></div>
+      <div class="feature-card"><div class="emoji">📝</div><h3>Content Strategy</h3><p>Create compelling content that attracts, educates, and converts your audience.</p></div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section class="partners fade-up">
+    <h2>Trusted By Growing Brands</h2>
+    <div class="partner-logos">
+      <div class="partner-card">Pexavel.com</div>
+      <div class="partner-card">We Reach Advertising</div>
+      <div class="partner-card">Hunt Campus</div>
+      <div class="partner-card">Evolve Digital</div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats fade-up">
+    <div class="stat-card"><h3>120+</h3><p>Clients Served</p></div>
+    <div class="stat-card"><h3>250+</h3><p>Campaigns Launched</p></div>
+    <div class="stat-card"><h3>95%</h3><p>Client Retention</p></div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials fade-up">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonial-cards">
+      <div class="testimonial-card"><p>"StrategyFirst.in doubled our lead generation in 3 months!"</p><h4>– John Doe, CEO</h4></div>
+      <div class="testimonial-card"><p>"Our website conversions improved tremendously thanks to their team."</p><h4>– Jane Smith, Marketing Head</h4></div>
+    </div>
+  </section>
+
+  <!-- SINGLE SECTION -->
+  <section class="single-section fade-up">
+    <h2>Elevate Your Business Today</h2>
+    <p>We combine strategy, creativity, and automation to help your business grow faster and smarter. Let’s take your brand to the next level.</p>
+    <a href="#contact" class="btn">Get a Free Consultation</a>
+    <div style="margin-top:50px;">
+      <img src="image_1.jpg" alt="Business Growth">
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container" style="display:flex; flex-wrap:wrap; justify-content:space-between; max-width:1200px; margin:0 auto; gap:40px;">
+      <div class="footer-section" style="flex:1; min-width:220px;">
+        <h4>Contact Us</h4>
+        <p>123 Digital Avenue,<br>Maharashtra, India</p>
+        <p>Email: <a href="mailto:contact@strategyfirst.in">contact@strategyfirst.in</a></p>
+        <p>Phone: <a href="tel:+911234567890">+91 8591639208</a></p>
+      </div>
+      <div class="footer-section" style="flex:1; min-width:180px;">
+        <h4>Quick Links</h4>
+        <ul style="list-style:none;padding:0;line-height:2;">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section" style="flex:1; min-width:180px;">
+        <h4>Follow Us</h4>
+        <div style="display:flex; gap:15px; font-size:20px;">
+          <a href="#">🌐</a>
+          <a href="#">📘</a>
+          <a href="#">🐦</a>
+          <a href="#">📸</a>
+        </div>
+      </div>
+      <div class="footer-section" style="flex:1; min-width:220px;">
+        <h4>Newsletter</h4>
+        <p>Subscribe for updates and offers:</p>
+        <form style="display:flex; flex-direction:column; gap:10px;">
+          <input type="email" placeholder="Your email" required>
+          <button type="submit" style="padding:12px;background:#00a6ff;color:white;border:none;border-radius:6px;cursor:pointer;">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div style="text-align:center;padding:20px 6%;border-top:1px solid #ddd;font-size:14px;color:#555;margin-top:40px;">
+      © 2025 StrategyFirst.in – All Rights Reserved. | 
+      <a href="#">Privacy Policy</a> | 
+      <a href="#">Terms of Service</a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleDropdown(event){
+      event.stopPropagation();
+      const dropdown=event.currentTarget.parentElement;
+      dropdown.classList.toggle('active');
+    }
+    document.addEventListener('click', function(){
+      document.querySelectorAll('.dropdown').forEach(dd => dd.classList.remove('active'));
+    });
+
+    // Fade-up animation on scroll
+    const faders = document.querySelectorAll('.fade-up');
+    const appearOptions = {threshold:0.2, rootMargin:"0px 0px -50px 0px"};
+    const appearOnScroll = new IntersectionObserver(function(entries, observer){
+      entries.forEach(entry=>{
+        if(!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(fader => appearOnScroll.observe(fader));
+
+    // Extra JS validation for name field
+    document.getElementById('businessForm').addEventListener('submit', function(e){
+      const nameField = this.name.value.trim();
+      if(/\d/.test(nameField)){
+        alert("Full Name cannot contain numbers!");
+        e.preventDefault();
+      }
+    });
+  </script>
+
+</body>
+</html>
